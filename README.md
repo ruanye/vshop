@@ -14,8 +14,8 @@ npm run dev
 # build for production with minification
 npm run build
 # 目录结构 
-  .mock  这个文件夹是放数据的  
-  .src
+  . mock  这个文件夹是放数据的  
+  . src
      .api  这个是放所有请求的 
      .components 这个放页面级组件
      .base       这个放公用组件 
