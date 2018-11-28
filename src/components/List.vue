@@ -8,16 +8,13 @@
 import MHeader from '../base/MHearder'
 export default {
   data () {
-    return {
-    }
+    return {}
   },
   components:{
     MHeader
   }
 }
 </script>
-
-
 <style scoped>
 
 </style>

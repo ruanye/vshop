@@ -36,3 +36,11 @@ router-link-exact-active router-link-active
 通过props传值控制返回箭头是否显示
 v-show  v-if 
 v-show  有没有都会渲染  display:none
+ajax请求使用axios
+npm install axios -s 
+axios 是基于promise封装的 
+
+export 会把当前模块的所有变量放在一个默认对象里导出
+* as T 把变量都放在一个有命名(例如：T)对象里面  as后面是对象名字 *表示所有的
+ import * as T from '../api'
+ T.getBanner()
