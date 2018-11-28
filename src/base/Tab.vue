@@ -39,6 +39,8 @@ export default {
    justify-content: center;
    align-items: center;
    border-top: 1px solid #e3e3e3;
+   background-color: #fff;
+   z-index: 3;
    a{
       flex:1;
       text-align: center

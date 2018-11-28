@@ -1,23 +1,30 @@
 <template>
   <div>
-    <MHeader >首页</MHeader> 
-    <Swiper></Swiper>
+    <MHeader>首页</MHeader>
+    <div class="container">
+      <Swiper :swiperSlides="slider"></Swiper>
+    </div> 
   </div>
 </template>
 
 <script>
 import MHeader from '../base/MHearder'
 import Swiper from '../base/Swiper'
-import {getBanner} from '../api'
+import {getBanner,getNew} from '../api'
 export default {
- async created(){
-     await getBanner()
-   },
-  data () {
+   data () {
     return {
+      slider:[],
+      list:[]
     }
   },
-  components:{
+   async created(){
+    let slider =  await getBanner();
+    this.slider =slider;
+    let list = await getNew();
+    this.list=list;
+   },
+   components:{
     MHeader,
     Swiper
   }
@@ -26,5 +33,9 @@ export default {
 
 
 <style scoped>
-
+.container{
+  position: relative;
+  top:40px;
+  margin-bottom: 80px;
+}
 </style>

@@ -36,5 +36,6 @@ export default {
   background-color: aqua;
   line-height: 40px;
   text-align: center;
+  z-index: 3;
 }
 </style>

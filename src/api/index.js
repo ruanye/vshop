@@ -7,6 +7,12 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
 });
 //axios 返回的是promise
+//获取轮播图
 export let  getBanner =()=>{
    return axios.get('/slider')
 }
+//获取首页列表
+export let getNew=()=>{
+  return axios.get('/new')
+}
+
