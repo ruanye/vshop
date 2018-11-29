@@ -15,4 +15,12 @@ export let  getBanner =()=>{
 export let getNew=()=>{
   return axios.get('/new')
 }
+//获取全部列表
+export let getAll=()=>{
+  return axios.get('/list')
+}
+//获取一个
+export let getOne =(id)=>{
+   return axios.get(`/list?id=${id}`) 
+}
 

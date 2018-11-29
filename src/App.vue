@@ -18,6 +18,9 @@ export default {
   padding: 0;
   margin: 0;
 }
+ul,li{
+  list-style: none;
+}
 a{
   color: #666;
   text-decoration: none;

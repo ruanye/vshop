@@ -44,3 +44,4 @@ export 会把当前模块的所有变量放在一个默认对象里导出
 * as T 把变量都放在一个有命名(例如：T)对象里面  as后面是对象名字 *表示所有的
  import * as T from '../api'
  T.getBanner()
+ 路由需要传参的 要有name 
