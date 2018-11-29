@@ -21,6 +21,6 @@ export let getAll=()=>{
 }
 //获取一个
 export let getOne =(id)=>{
-   return axios.get(`/list?id=${id}`) 
+  return axios.get(`/list?id=${id}`) 
 }
 

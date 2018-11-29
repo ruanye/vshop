@@ -2,72 +2,84 @@
         "id":1,
         "name":"苹果",
         "price":1000,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":2,
         "name":"橘子",
         "price":20,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":3,
         "name":"西瓜",
         "price":30,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":4,
         "name":"芒果",
         "price":300,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":5,
         "name":"荔枝",
         "price":80,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":6,
         "name":"葡萄",
         "price":2,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":7,
         "name":"榴莲",
         "price":3,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":8,
         "name":"桃子",
         "price":20,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":9,
         "name":"草莓",
         "price":30,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":10,
         "name":"李子",
         "price":3,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":11,
         "name":"桂圆",
         "price":300,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     },
     {   
         "id":12,
         "name":"香蕉",
         "price":40,
+        "info":"正宗红富士",
         "img":"https://img12.360buyimg.com/n7/jfs/t30148/267/266484845/180547/affd3b2d/5bed232eN13577886.jpg!q70.dpg"
     }
 ]

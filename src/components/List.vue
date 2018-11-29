@@ -1,12 +1,16 @@
 <template>
   <div>
    <MHeader>列表</MHeader>
-     <div>
+     <div class="content">
         <ul>
          <router-link  v-for="(item,index) in Alist" :key="index"
          :to="{name:'detail',params:{id:item.id}}" tag="li">
           <img :src="item.img" alt="">
-          <p>{{item.name}}</p>
+          <div class="infobox">
+            <p>{{item.name}}</p>
+            <p>{{item.info}}</p>
+            <p class="price">{{item.price}}$</p>
+        </div>
         </router-link> 
         </ul>
       </div>
@@ -34,7 +38,31 @@ export default {
     }
   }
 }
+
 </script>
 <style scoped>
+.content{
+  width: 100%;
+  position: fixed;
+  top:40px;
+  bottom: 50px;
+  overflow: scroll
+}
+li{
+   margin: 10px 0;
+   border-bottom:1px solid #e3e3e3;
+  display: flex;
+   padding-bottom: 10px;
+}
+.infobox{
+ align-self: flex-end;
+ margin-left: 10px
+}
+p{
+  line-height: 30px;
+}
 
+.price{
+  color: #ff0000;
+}
 </style>
