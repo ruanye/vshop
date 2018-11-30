@@ -45,3 +45,12 @@ export 会把当前模块的所有变量放在一个默认对象里导出
  import * as T from '../api'
  T.getBanner()
  路由需要传参的 要有name 
+ redirect  重定向
+ localhost:3000/list
+ 一页显示 5条   
+ localhost:3000/list?page=1 
+ 1-5
+ localhost:3000/list?page=2 
+ 6-10 
+ axios.get(`list?page=${page}`)
+ hasemore  是否有下一页 

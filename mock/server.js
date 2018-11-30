@@ -12,6 +12,7 @@ function read(cb){
     }
   })
 }
+let offset = 5; //每一页的数据是5条
 http.createServer((req,res)=>{
   //设置哪个域名可以跨域
   res.setHeader('Access-Control-Allow-Origin','*');
@@ -30,7 +31,7 @@ http.createServer((req,res)=>{
     })
     return
   }
-   //http://localhost:3000/list?id=4
+   //http://localhost:3000/list?id=dddd
   
    //列表页接口
    if(pathname==='/list'){
@@ -39,11 +40,35 @@ http.createServer((req,res)=>{
        read((data)=>{
          if(id){
           let good = data.find(item=>item.id===id)
-           res.end(JSON.stringify(good))
+          if(good){
+            res.end(JSON.stringify(good))
+           }else{
+            res.end(JSON.stringify({}))
+           }
          }else{
           res.end(JSON.stringify(data))
          }
       })
+     return
+   }
+   //分页接口 
+   //localhost:3000/page?page=1
+   if(pathname ==='/page'){
+     res.setHeader('content-type','text/json;charset=utf8')
+     let page =parseInt(query.page);
+         page =page -1; 
+      //默认有下一页
+     let hasmore = true;
+     read((data)=>{
+         //offset 每次5条 
+         let pagedata = data.slice(page*offset,page*offset+offset);
+         let lastindex = page*offset+offset;
+        //如果当前最后的索引大于data的长度，则表示没有数据了 
+        if(lastindex>data.length){
+          hasmore= false;
+        }
+        res.end(JSON.stringify({data:pagedata,hasmore}));
+     }) 
      return
    }
   res.end('404')

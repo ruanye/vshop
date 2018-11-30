@@ -13,34 +13,70 @@
         </div>
         </router-link> 
         </ul>
+        <div class="center-block">
+          <button @click="loadMore">{{hasmoretext}}</button>
+        </div>
       </div>
   </div>
 </template>
 <script>
 import MHeader from '../base/MHearder'
-import {getAll} from '../api'
+import {getPage} from '../api'
 export default {
   created(){
     this.getA()
   },
   data () {
     return {
-      Alist:[]
+      page:1,
+      Alist:[],
+      hasmore:true,
+      hasmoretext:'点击加载更多'
     }
   },
   components:{
     MHeader
   },
   methods:{
+   //获取分页数据
    async getA(){
-     let Alist = await getAll();
-     this.Alist = Alist;
+    let {data:Alist,hasmore} = await getPage(this.page)
+    this.Alist=[...this.Alist,...Alist]
+    this.hasmore= hasmore;
+    if(!hasmore){
+      //如果this.hasmore 为false,表示没有下一页了
+       this.hasmoretext='没有更多了'
+    }
+   },
+   //加载更多
+   loadMore(){
+     if(this.hasmore){
+       this.page+=1;
+       this.getA()
+     }
     }
   }
 }
 
 </script>
 <style scoped>
+.center-block{
+  text-align: center;
+}
+button{
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+  background-color: yellowgreen;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
 .content{
   width: 100%;
   position: fixed;

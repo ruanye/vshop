@@ -23,4 +23,7 @@ export let getAll=()=>{
 export let getOne =(id)=>{
   return axios.get(`/list?id=${id}`) 
 }
-
+//获取分页接口
+export let getPage=(page)=>{
+  return axios.get(`/page?page=${page}`);
+}

@@ -26,6 +26,7 @@
 import MHeader from "../base/MHearder";
 import { getOne } from "../api";
 export default {
+  name:'detail',
   created() {
     this.getGood();
   },
