@@ -1,69 +1,86 @@
 <template>
   <div>
-   <MHeader>列表</MHeader>
-     <div class="content">
-        <ul>
-         <router-link  v-for="(item,index) in Alist" :key="index"
-         :to="{name:'detail',params:{id:item.id}}" tag="li">
-          <img :src="item.img" alt="">
+    <MHeader ref="mheader">列表</MHeader>
+    <div class="content" ref="scroll" @scroll="sload">
+      <ul>
+        <router-link
+          v-for="(item,index) in Alist"
+          :key="index"
+          :to="{name:'detail',params:{id:item.id}}"
+          tag="li"
+        >
+          <img :src="item.img" alt>
           <div class="infobox">
             <p>{{item.name}}</p>
             <p>{{item.info}}</p>
             <p class="price">{{item.price}}$</p>
-        </div>
-        </router-link> 
-        </ul>
-        <div class="center-block">
-          <button @click="loadMore">{{hasmoretext}}</button>
-        </div>
+          </div>
+        </router-link>
+      </ul>
+      <div class="center-block">
+        <button @click="loadMore">{{hasmoretext}}</button>
       </div>
+    </div>
   </div>
 </template>
 <script>
-import MHeader from '../base/MHearder'
-import {getPage} from '../api'
+import MHeader from "../base/MHearder";
+import { getPage } from "../api";
 export default {
-  created(){
-    this.getA()
+  created() {
+    this.getA();
   },
-  data () {
+  data() {
     return {
-      page:1,
-      Alist:[],
-      hasmore:true,
-      hasmoretext:'点击加载更多'
-    }
+      page: 1,
+      Alist: [],
+      hasmore: true,
+      hasmoretext: "点击加载更多"
+    };
   },
-  components:{
+  mounted() {
+    //console.log()
+  },
+  components: {
     MHeader
   },
-  methods:{
-   //获取分页数据
-   async getA(){
-    let {data:Alist,hasmore} = await getPage(this.page)
-    this.Alist=[...this.Alist,...Alist]
-    this.hasmore= hasmore;
-    if(!hasmore){
-      //如果this.hasmore 为false,表示没有下一页了
-       this.hasmoretext='没有更多了'
-    }
-   },
-   //加载更多
-   loadMore(){
-     if(this.hasmore){
-       this.page+=1;
-       this.getA()
-     }
+  methods: {
+    //滚动事件
+    sload() {
+       clearTimeout(this.timer);
+       this.timer = setTimeout(() => {
+       let { scrollTop, clientHeight, scrollHeight } = this.$refs.scroll;
+        if (scrollTop + clientHeight + 20 > scrollHeight) {
+          this.loadMore();
+        }
+      },13);
+    },
+    //获取分页数据
+    async getA() {
+      let { data: Alist, hasmore } = await getPage(this.page);
+      //合并已经拿到的数据和新请求的数据
+      this.Alist = [...this.Alist, ...Alist];
+      this.hasmore = hasmore;
+      if (!hasmore) {
+        //如果this.hasmore 为false,表示没有下一页了
+        this.hasmoretext = "没有更多了";
+      }
+    },
+    //加载更多
+    loadMore() {
+      if (this.hasmore) {
+        this.page += 1;
+        this.getA();
+      }
     }
   }
-}
-
+};
 </script>
 <style scoped>
-.center-block{
+.center-block {
   text-align: center;
 }
-button{
+button {
   display: inline-block;
   width: 200px;
   height: 40px;
@@ -77,28 +94,28 @@ button{
   cursor: pointer;
   margin-bottom: 20px;
 }
-.content{
+.content {
   width: 100%;
   position: fixed;
-  top:40px;
+  top: 40px;
   bottom: 50px;
-  overflow: scroll
+  overflow: scroll;
 }
-li{
-   margin: 10px 0;
-   border-bottom:1px solid #e3e3e3;
+li {
+  margin: 10px 0;
+  border-bottom: 1px solid #e3e3e3;
   display: flex;
-   padding-bottom: 10px;
+  padding-bottom: 10px;
 }
-.infobox{
- align-self: flex-end;
- margin-left: 10px
+.infobox {
+  align-self: flex-end;
+  margin-left: 10px;
 }
-p{
+p {
   line-height: 30px;
 }
 
-.price{
+.price {
   color: #ff0000;
 }
 </style>

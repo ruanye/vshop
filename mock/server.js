@@ -55,20 +55,29 @@ http.createServer((req,res)=>{
    //localhost:3000/page?page=1
    if(pathname ==='/page'){
      res.setHeader('content-type','text/json;charset=utf8')
-     let page =parseInt(query.page);
-         page =page -1; 
-      //默认有下一页
+      ;
+      let page =parseInt(query.page);
+      if(!page){
+        page=1;
+      }
+      page =page -1; 
+     
+     //默认有下一页
      let hasmore = true;
      read((data)=>{
-         //offset 每次5条 
+        
+        //offset 每次5条 
          let pagedata = data.slice(page*offset,page*offset+offset);
          let lastindex = page*offset+offset;
         //如果当前最后的索引大于data的长度，则表示没有数据了 
         if(lastindex>data.length){
           hasmore= false;
         }
-        res.end(JSON.stringify({data:pagedata,hasmore}));
-     }) 
+       
+          res.end(JSON.stringify({data:pagedata,hasmore}));
+       
+       
+      }) 
      return
    }
   res.end('404')
