@@ -2,7 +2,9 @@
   <div>
     <MHeader>首页</MHeader>
     <div class="container">
-      <Swiper :swiperSlides="slider"></Swiper>
+      <Loading v-if="load"></Loading>
+      <template v-else>
+        <Swiper :swiperSlides="slider"></Swiper>
       <div>
         <ul>
           <li v-for="(newItem,index) in list" :key="index">
@@ -11,6 +13,7 @@
           </li>
         </ul>
       </div>
+     </template>
     </div> 
   </div>
 </template>
@@ -18,31 +21,29 @@
 <script>
 import MHeader from '../base/MHearder'
 import Swiper from '../base/Swiper'
-import {getBanner,getNew} from '../api'
+import Loading from '../base/Loading'
+import {getHome} from '../api'
 export default {
    data () {
     return {
       slider:[],
-      list:[]
+      list:[],
+      load:true
     }
   },  
   created(){
-    this.getImgList();
-    this.getNewList();
+     this.getHomeList()
    },
    components:{
     MHeader,
-    Swiper
+    Swiper,
+    Loading
   },
   methods:{
-   async getImgList(){
-       let slider =  await getBanner();
-       this.slider =slider;
-    },
-   async getNewList(){
-      let list = await getNew();
-      this.list=list;
-   }
+   async getHomeList(){
+      [this.slider,this.list]=  await getHome();
+      this.load= false;
+    }
   }
 }
 </script>

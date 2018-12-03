@@ -4,7 +4,10 @@ import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
-
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  next()
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

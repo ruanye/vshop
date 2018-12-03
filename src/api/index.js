@@ -27,3 +27,7 @@ export let getOne =(id)=>{
 export let getPage=(page)=>{
   return axios.get(`/page?page=${page}`);
 }
+//首页所有数据获取完成 
+export let getHome=()=>{
+   return axios.all([getBanner(),getNew()])
+}

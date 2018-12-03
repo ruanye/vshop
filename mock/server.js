@@ -27,8 +27,10 @@ http.createServer((req,res)=>{
     res.setHeader('content-type','text/json;charset=utf8');
     read((data)=>{
        let newlist = data.reverse().slice(0,6);
-        res.end(JSON.stringify(newlist)) 
-    })
+       setTimeout(() => {
+        res.end(JSON.stringify(newlist))
+       }, 4000);
+      })
     return
   }
    //http://localhost:3000/list?id=dddd

@@ -51,7 +51,7 @@ export default {
        this.timer = setTimeout(() => {
        let { scrollTop, clientHeight, scrollHeight } = this.$refs.scroll;
         if (scrollTop + clientHeight + 20 > scrollHeight) {
-          this.loadMore();
+          this.loadMore()
         }
       },13);
     },
