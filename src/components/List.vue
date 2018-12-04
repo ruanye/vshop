@@ -15,6 +15,7 @@
             <p>{{item.info}}</p>
             <p class="price">{{item.price}}$</p>
           </div>
+          <button @click.stop="dele(item.id)">删除</button>
         </router-link>
       </ul>
       <div class="center-block">
@@ -25,7 +26,7 @@
 </template>
 <script>
 import MHeader from "../base/MHearder";
-import { getPage } from "../api";
+import { getPage,deleteGood} from "../api";
 export default {
   created() {
     this.getA();
@@ -45,6 +46,11 @@ export default {
     MHeader
   },
   methods: {
+    //删除商品
+   async dele(deleId){
+        await deleteGood(deleId);
+        this.Alist = this.Alist.filter(item=>item.id!==deleId)
+    },
     //滚动事件
     sload() {
        clearTimeout(this.timer);

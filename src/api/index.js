@@ -31,3 +31,7 @@ export let getPage=(page)=>{
 export let getHome=()=>{
    return axios.all([getBanner(),getNew()])
 }
+//删除商品
+export let deleteGood=(id)=>{
+  return axios.delete(`/list?id=${id}`)
+}
