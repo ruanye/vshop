@@ -6,7 +6,7 @@
         <router-link
           v-for="(item,index) in Alist"
           :key="index"
-          :to="{name:'detail',params:{id:item.id}}"
+          :to="{name:'detail',query:{id:item.id}}"
           tag="li"
         >
           <img :src="item.img" alt>

@@ -1,8 +1,8 @@
 <template>
   <div class="cont">
     <MHeader :showArrow="true">详情页</MHeader>
-    <div class="formbox">
-      <label for>名称
+  <div class="formbox">
+       <label for>名称
         <br>
         <input type="text" v-model="good.name">
       </label>
@@ -19,12 +19,17 @@
         <input type="text" v-model="good.price">
       </label>
     </div>
+    <div class="btnbox">
+      <button @click="update">确认修改</button>
+    </div>
+    
   </div>
+  
 </template>
 
 <script>
 import MHeader from "../base/MHearder";
-import { getOne } from "../api";
+import { getOne,modifyGood} from "../api";
 export default {
   name:'detail',
   created() {
@@ -41,10 +46,15 @@ export default {
   },
   computed: {
     gid() {
-      return this.$route.params.id;
+      return this.$route.query.id;
     }
   },
   methods: {
+    //修改
+   async update(){
+      await modifyGood(this.gid,this.good)
+      this.$router.push('/list')
+    },
     async getGood() {
       let good = await getOne(this.gid);
       this.good = good;
@@ -54,7 +64,25 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="less">
+.btnbox{
+  position: relative;
+  top:80px;
+  text-align: center;
+  button{
+     display: inline-block;
+     width: 200px;
+     height:40px;
+     line-height: 40px;
+     outline: none;
+     border-radius: 20px;
+     border:none;
+     background-color:darkcyan;
+     color: #fff;
+     cursor: pointer;
+  }
+}
+
 .cont {
   position: absolute;
   width: 100%;

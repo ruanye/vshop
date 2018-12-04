@@ -10,7 +10,7 @@ export default new Router({
     {path: '/car',component: ()=>import('../components/Car')},
     {path: '/list',component:()=>import('../components/List')},
     {path: '/my',component: ()=>import('../components/My')},
-    {name:'detail',path: '/detail/:id',component:()=>import('../components/Detail')},
+    {name:'detail',path: '/detail',component:()=>import('../components/Detail')},
     {path:'/*',redirect:'/home'}
   ]
 })

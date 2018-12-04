@@ -35,3 +35,7 @@ export let getHome=()=>{
 export let deleteGood=(id)=>{
   return axios.delete(`/list?id=${id}`)
 }
+//修改商品
+export let modifyGood=(id,data)=>{
+    return axios.put(`/list?id=${id}`,data)
+}

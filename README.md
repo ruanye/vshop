@@ -66,3 +66,9 @@ export 会把当前模块的所有变量放在一个默认对象里导出
 #不缓存的放在这里
 <router-view v-if="!$route.meta.keepAlive"/> 
 ```
+路由传参  
+1 params 
+http://localhost:8080/#/detail/4
+
+2 query 
+http://localhost:8080/#/detail?id=4

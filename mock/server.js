@@ -54,8 +54,8 @@ http.createServer((req, res) => {
   //列表页接口
   if (pathname === '/list') {
     let id = parseInt(query.id);
-    console.log(req.method, '请求方式');
     switch (req.method) {
+      //删除接口
       case 'DELETE':
         if (id) {
           read(data => {
@@ -68,6 +68,28 @@ http.createServer((req, res) => {
           })
         }
         break;
+        case 'PUT':
+         let str ='';
+         req.on('data',chunk=>{
+           str+=chunk;
+          })
+         req.on('end',()=>{
+           let good = JSON.parse(str);
+           console.log(good,'数据')
+           read(data=>{
+            let goods = data.map(item=>{
+               //如果等于改变这项的id，返回改变后的数据（good）;如果不等于直接返回原来的
+               if(item.id===id){
+                 return good
+               }
+               return item
+              })
+             write(goods,()=>{
+               return res.end(JSON.stringify(good))
+            })
+           })
+         })
+        break
     }
 
     res.setHeader('content-type', 'text/json;charset=utf8');
