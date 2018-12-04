@@ -74,8 +74,9 @@ http.createServer((req, res) => {
            str+=chunk;
           })
          req.on('end',()=>{
+           //good 是前端传过来的数据
            let good = JSON.parse(str);
-           console.log(good,'数据')
+          
            read(data=>{
             let goods = data.map(item=>{
                //如果等于改变这项的id，返回改变后的数据（good）;如果不等于直接返回原来的
@@ -84,6 +85,7 @@ http.createServer((req, res) => {
                }
                return item
               })
+            //把改变后的值重新写入json文件
              write(goods,()=>{
                return res.end(JSON.stringify(good))
             })
