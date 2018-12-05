@@ -54,6 +54,7 @@ http.createServer((req, res) => {
   //列表页接口
   if (pathname === '/list') {
     let id = parseInt(query.id);
+    res.setHeader('content-type', 'text/json;charset=utf8');
     switch (req.method) {
       //删除接口
       case 'DELETE':
@@ -68,6 +69,7 @@ http.createServer((req, res) => {
           })
         }
         break;
+        //修改接口
         case 'PUT':
          let str ='';
          req.on('data',chunk=>{
@@ -91,10 +93,27 @@ http.createServer((req, res) => {
             })
            })
          })
-        break
+        break;
+        //添加接口
+        case 'POST':
+          let str1='';
+          req.on('data',chunk=>{
+            str1+=chunk
+          })
+          req.on('end',()=>{
+           let adgood = JSON.parse(str1);
+           read(data=>{
+             //给添加的商品加一个id,如果data是空的id为1，否则id为最后一项的id加1
+             adgood.id =data.length?data[data.length-1].id+1:1;
+             data = [...data,adgood];
+              console.log(data,'所有数据')
+             write(data,()=>{
+                return res.end(JSON.stringify(adgood))
+             })
+           })
+          })
+        break;
     }
-
-    res.setHeader('content-type', 'text/json;charset=utf8');
     read((data) => {
       if (id) {
         let good = data.find(item => item.id === id)

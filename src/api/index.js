@@ -39,3 +39,7 @@ export let deleteGood=(id)=>{
 export let modifyGood=(id,data)=>{
     return axios.put(`/list?id=${id}`,data)
 }
+//添加商品
+export let addNew =(good)=>{
+   return axios.post('/list',good)
+}

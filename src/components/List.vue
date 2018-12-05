@@ -9,7 +9,7 @@
           :to="{name:'detail',query:{id:item.id}}"
           tag="li"
         >
-          <img :src="item.img" alt>
+        <img :src="item.img" alt>
           <div class="infobox">
             <p>{{item.name}}</p>
             <p>{{item.info}}</p>

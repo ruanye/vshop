@@ -20,7 +20,7 @@
       </label>
     </div>
     <div class="btnbox">
-      <button @click="update">确认修改</button>
+      <button @click="addGood">确认添加</button>
     </div>
     
   </div>
@@ -29,11 +29,11 @@
 
 <script>
 import MHeader from "../base/MHearder";
-import { getOne,modifyGood} from "../api";
+import { getOne,modifyGood,addNew} from "../api";
 export default {
   name:'detail',
   created() {
-    this.getGood();
+    //this.getGood();
   },
   name: "detail",
   data() {
@@ -50,6 +50,11 @@ export default {
     }
   },
   methods: {
+    //添加功能
+    async addGood(){
+      await addNew(this.good)
+      this.$router.push('/list')
+    },
     //修改
    async update(){
       await modifyGood(this.gid,this.good)

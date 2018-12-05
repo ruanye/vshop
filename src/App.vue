@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <transition name="fade"  mode="out-in">
+    <transition name="fadein">
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"/>
        </keep-alive>
       </transition > 
-     <transition name="fade"  mode="out-in">
+     <transition name="fadein">
      <router-view v-if="!$route.meta.keepAlive"/> 
      </transition>
    <Tab/> 
@@ -32,15 +32,16 @@ a{
   color: #666;
   text-decoration: none;
 }
-
-.fade-out-in {
-   transform: translateX(100px);
-   opacity: 0;
-   transition:all 2s;
+.fadein-enter {
+  opacity:0;
+  transition:all 0.3s linear;
 }
-.fade-enter {
-  transform: translateX(100px);
-  opacity:1;
-  transition:all 2s;
+.fade-enter-active {
+   opacity: 1;
+   transition:all 0.3s linear;
+}
+.fadein-leave-active{
+   opacity:0;
+   transition:all 0.3s linear;
 }
 </style>
