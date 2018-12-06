@@ -7,6 +7,7 @@ export default new Router({
     {path: '/home',component:()=>import('../components/Home'),meta:{
       keepAlive:true
     }},
+    {path: '/demo',component:()=>import('../components/DemoVx')},
     {path: '/car',component: ()=>import('../components/Car')},
     {path: '/list',component:()=>import('../components/List')},
     {path: '/my',component: ()=>import('../components/My')},

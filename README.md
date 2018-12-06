@@ -72,3 +72,14 @@ http://localhost:8080/#/detail/4
 
 2 query 
 http://localhost:8080/#/detail?id=4
+vuex    
+vue 组件 通过dispatch 提交到 actions  actions 通过 commit 触发 
+mutations  mutatiosn 负责修改state
+所有的组件就可以拿到state 进行渲染了 
+actions 是异步的  store.dispatch 
+mutations 是同步的  
+如果是同步的话可以直接用store.commit
+提交到 mutations   
+只有mutations 能够修改state的状态
+getters 是vuex的计算属性 计算state相关的值  相当于组件的computed  
+

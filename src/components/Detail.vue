@@ -2,6 +2,7 @@
   <div class="cont">
     <MHeader :showArrow="true">详情页</MHeader>
   <div class="formbox">
+    {{$store.state.name}}
        <label for>名称
         <br>
         <input type="text" v-model="good.name">

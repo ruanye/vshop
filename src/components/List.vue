@@ -15,7 +15,10 @@
             <p>{{item.info}}</p>
             <p class="price">{{item.price}}$</p>
           </div>
-          <button @click.stop="dele(item.id)">删除</button>
+          <div class="btngroup">
+            <button @click.stop="addCar(item)">添加</button>
+            <button @click.stop="dele(item.id)">删除</button>
+          </div>
         </router-link>
       </ul>
       <div class="center-block">
@@ -46,6 +49,10 @@ export default {
     MHeader
   },
   methods: {
+    //添加商品到购物车
+    addCar(good){
+       console.log(good,'商品')
+    },
     //删除商品
    async dele(deleId){
         await deleteGood(deleId);
@@ -82,7 +89,19 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
+.btngroup{
+  display: flex;
+  button{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 10px;
+    background-color:chocolate;
+    color:#fff;
+    font-size: 14px;
+  }
+}
 .center-block {
   text-align: center;
 }
