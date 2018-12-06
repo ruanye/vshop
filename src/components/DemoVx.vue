@@ -1,32 +1,41 @@
 <template>
   <div class="vuexbox">
     vuexdemo
-    <button @click="increase" class="btn">+</button>
+    <!-- <button @click="addcount(10)" class="btn">+</button> -->
+    
+     <!-- 没有mapMatations的时候调用如下 -->
+    <button @click="increase(10)" class="btn">+</button>
+    
     <span>{{count}}</span>
     <button class="btn" @click="minus">-</button>
+     <p style="font-size:60px">{{conutType}}</p>
   </div>
 </template>
-
 <script>
+import {mapState,mapGetters,mapMutations} from 'vuex';
 export default {
   data () {
     return {}
    },
   computed:{
-     count(){
-       return this.$store.state.count
-     } 
+    //  ...mapState({
+    //    count:state=>state.count
+    //  }),
+     ...mapState(['count']),
+     ...mapGetters(['conutType']),
+     
    },
    methods:{
-     //加
-     increase(){
-       //只有一个参数的话提交到mutations的方法名
-       this.$store.commit('addcount')
-     },
+      //加
+     //  ...mapMutations(['addcount']),
+      ...mapMutations({
+        increase:'addcount' //把this.inrease映射成 store.commit('addcount')
+      }),
      //减
      minus(){
-
+        this.$store.dispatch('mincount',10)
      }
+
    }
 }
 </script>
@@ -35,12 +44,12 @@ export default {
 <style lang='less' scoped>
 .vuexbox{
    position: relative;
-   top:100px;
+   top:200px;
   text-align: center;
   button,span{
     display: inline-block;
-    width: 100px;
-    height: 30px;
+    width: 200px;
+    height: 60px;
     line-height: 30px;
     margin: 0 10px;
     background-color:chocolate;
@@ -53,7 +62,7 @@ export default {
   span{
     background: #fff;
     color: #000;
-    font-size: 18px;
+    font-size: 36px;
    
   }
  

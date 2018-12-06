@@ -81,5 +81,21 @@ mutations 是同步的
 如果是同步的话可以直接用store.commit
 提交到 mutations   
 只有mutations 能够修改state的状态
-getters 是vuex的计算属性 计算state相关的值  相当于组件的computed  
+getters 是vuex的计算属性 计算state相关的值  相当于组件的computed 
 
+####dispatch 和 commit的传参问题 ：
+  `
+  一个参数的时候可以直接传递，多个参数需要用对象传递  
+  ` 
+  方案一、
+  this.$store.commit('addcount',{a:10,b:20})
+  方案二、
+  this.$store.commit({type:'addcount'a:10,
+  b:20})
+  type：为要提交的mutations函数 
+
+mapState,mapGetters,mapMutations，mapActions  
+辅助工具类
+actions 需要注意的点
+需要把commit通过解构赋值得到 通过commit
+提交到mutations的同名函数
