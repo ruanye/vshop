@@ -99,3 +99,6 @@ mapState,mapGetters,mapMutations，mapActions
 actions 需要注意的点
 需要把commit通过解构赋值得到 通过commit
 提交到mutations的同名函数
+vuex书写了逻辑流程：
+ 1.先定义事件 (mutations-type.js)
+ 2.触发事件

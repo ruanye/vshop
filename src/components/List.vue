@@ -29,7 +29,10 @@
 </template>
 <script>
 import MHeader from "../base/MHearder";
-import { getPage,deleteGood} from "../api";
+import { getPage,deleteGood} 
+from "../api";
+import * as Types from '../store/mutations-types.js'
+
 export default {
   created() {
     this.getA();
@@ -51,8 +54,11 @@ export default {
   methods: {
     //添加商品到购物车
     addCar(good){
-       console.log(good,'商品')
-    },
+       this.$store.commit({
+         type:Types.ADD_CAR,
+         good
+       })
+       },
     //删除商品
    async dele(deleId){
         await deleteGood(deleId);
@@ -89,6 +95,7 @@ export default {
   }
 };
 </script>
+
 <style lang="less" scoped>
 .btngroup{
   display: flex;

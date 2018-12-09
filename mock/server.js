@@ -17,18 +17,8 @@ function read(cb) {
 function write(data, cb) {
   fs.writeFile('./good.json', JSON.stringify(data), 'utf8', cb)
 }
-
 let offset = 5; //每一页的数据是5条
 http.createServer((req, res) => {
-  //设置哪个域名可以跨域
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //允许哪个方法可以跨域
-  res.setHeader("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-  res.setHeader("X-Powered-By", ' 3.2.1')
-  //如果是OPTIONS 直接返回成功
-  if (req.method == 'OPTIONS') return res.end('200')
-
   let {
     pathname,
     query
