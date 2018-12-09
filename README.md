@@ -102,3 +102,4 @@ actions 需要注意的点
 vuex书写了逻辑流程：
  1.先定义事件 (mutations-type.js)
  2.触发事件
+ 3.处理事件 处理state里面的数据 最后拿到数据
