@@ -1,9 +1,17 @@
 <template>
   <div>
+    <div>
+      <p> {{checkallA}}全选 {{checkall}}</p>
+      <label class="flexstart" for="checkallA">
+          <input type="checkbox" v-model="checkallA">
+           <span>全选</span>
+       </label>
+    </div>
     <ul class="carlist">
+       
       <li v-for="(item,index) in goodlist" :key="index">
           <label class="check-box" for="check">
-            <input @change="changchecked(item)" type="checkbox" v-model="item.sele">
+            <input @change="changeone(item)" type="checkbox" v-model="item.sele">
            {{item.sele}}
           </label>
          <img :src="item.img" alt="">
@@ -20,25 +28,62 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState,mapGetters} from 'vuex'
 export default {
   data () {
     return {
+     
     }
   },
   computed:{
+    checkallA:{
+       get(){
+         return this.$store.getters.checkall
+       }, 
+       set(val){
+          this.$store.commit('checkall',val)
+       }
+    },
+    ...mapGetters(['checkall']),
     ...mapState(['goodlist'])
+    
   },
   methods:{
-    changchecked(item){
-     }
+    changeone(item){
+      this.$store.commit('change',item)
+    }
   }
 }
 </script>
 
 
 <style lang="less" scoped>
+.flexstart{
+   input{
+    margin:0 10px;
+    -webkit-appearance:none;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid  #e3e3e3;
+    border-radius: 5px;
+    outline: none;
+   }
+   input:checked:before{
+    content: '';
+     display: inline-block;
+     border: 1px solid green;
+     border-top-width: 0;
+     border-right-width: 0; 
+     width: 12px;
+     height: 8px;
+     transform: rotate(-50deg);
+     position:relative;
+     left: 2px;
+   }
+}
 .check-box{
+  
   display: flex;
   justify-content: center;
   align-items: center;
