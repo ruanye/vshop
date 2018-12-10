@@ -54,7 +54,7 @@ export default {
   methods: {
     //添加商品到购物车
     addCar(good){
-       this.$store.commit({
+      this.$store.commit({
          type:Types.ADD_CAR,
          good
        })
