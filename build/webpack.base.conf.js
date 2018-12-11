@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+//读取文件路径用的 
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
@@ -21,10 +22,11 @@ const createLintingRule = () => ({
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
+  entry: {//入口 
     app: './src/main.js'
+    
   },
-  output: {
+  output: {//出口
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
@@ -32,12 +34,15 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
+    extensions: ['.js', '.vue', '.json'],//以 js ...等结尾的可以省略
+    alias: {//alias 别名 
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      '_c': resolve('src/components'),
     }
   },
+  //webpack 有2个核心模块 loader 和plugin
+  
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
