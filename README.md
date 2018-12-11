@@ -95,7 +95,8 @@ getters 是vuex的计算属性 计算state相关的值  相当于组件的comput
   type：为要提交的mutations函数 
 
 mapState,mapGetters,mapMutations，mapActions  
-辅助工具类
+辅助工具类  所有通过辅助函数拿到的 无论值还是方法 都会挂载在实例（this）上面
+
 actions 需要注意的点
 需要把commit通过解构赋值得到 通过commit
 提交到mutations的同名函数
@@ -103,3 +104,28 @@ vuex书写了逻辑流程：
  1.先定义事件 (mutations-type.js)
  2.触发事件
  3.处理事件 处理state里面的数据 最后拿到
+commit 3种传参方式  
+``` 
+1、this.checkall(val)&& ...mapMutations/mapActions ('checkall')
+
+2、this.$store.commit/dispacth('checkall',val)
+
+3、this.store.commit/dispatch({
+          type:'checkall',
+          val
+        })
+```
+vuex 表单 
+如果是双向绑定的值使用vuex 一般通过设置值的get  和 set  或者用监听事件的形式来实现值 参考文档 
+ https://vuex.vuejs.org/zh/guide/forms.html
+ localStorage    长期存在的  
+ sessionStorage  关闭会话就会清除 
+ localStorage/sessionStorage的方法：
+ 1）setItem(key,value) 设置 
+ 2）getItem(key)       获取
+ 3）removeItem(key)    清除单项 
+ 4）clear()            清除所有  
+*注意事项：组件的computed 和vuex的getters  每一个值必须加return 才能返回 
+
+
+

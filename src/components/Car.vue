@@ -1,15 +1,13 @@
 <template>
   <div>
     <div>
-      <p> {{checkallA}}全选 {{checkall}}</p>
-      <label class="flexstart" for="checkallA">
+     <label class="flexstart" for="checkallA">
           <input type="checkbox" v-model="checkallA">
            <span>全选</span>
        </label>
     </div>
     <ul class="carlist">
-       
-      <li v-for="(item,index) in goodlist" :key="index">
+       <li v-for="(item,index) in goodlist" :key="index">
           <label class="check-box" for="check">
             <input @change="changeone(item)" type="checkbox" v-model="item.sele">
            {{item.sele}}
@@ -24,11 +22,14 @@
          
       </li>
     </ul>
+    <div>
+      总数量:{{allCount}} 总价格：{{totalPrice}}
+    </div>
   </div>
 </template>
 
 <script>
-import {mapState,mapGetters} from 'vuex'
+import {mapState,mapGetters,mapMutations} from 'vuex'
 export default {
   data () {
     return {
@@ -37,14 +38,14 @@ export default {
   },
   computed:{
     checkallA:{
-       get(){
-         return this.$store.getters.checkall
-       }, 
-       set(val){
-          this.$store.commit('checkall',val)
-       }
+      get(){
+         return this.getAllCheck
+      },
+      set(val){
+         this.$store.commit('checkall',val)
+      }
     },
-    ...mapGetters(['checkall']),
+    ...mapGetters(['getAllCheck','allCount','totalPrice']),
     ...mapState(['goodlist'])
     
   },

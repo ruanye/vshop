@@ -12,6 +12,9 @@ const state  ={
   //单选改变的时候提交一次数据
   //作业：通过state的方式完成购物车
 }
+if(localStorage&&localStorage['list']){
+  state.goodlist =JSON.parse(localStorage['list']) 
+}
 export default new Vuex.Store({
    state,
    mutations,
